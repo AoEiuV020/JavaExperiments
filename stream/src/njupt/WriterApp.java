@@ -1,8 +1,8 @@
 package njupt;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.Scanner;
 
 /**
@@ -13,6 +13,8 @@ public class WriterApp {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.nextLine();
         File file = new File(System.getProperty("java.io.tmpdir"), "njupt.txt");
-        Files.write(Paths.get(file.getAbsolutePath()), str.getBytes());
+        OutputStream output = new FileOutputStream(file);
+        output.write(str.getBytes());
+        output.close();
     }
 }
